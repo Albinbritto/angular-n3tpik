@@ -1,0 +1,26 @@
+  <div class="add-user-container">
+    <div class="add-user-wrapper">
+      <form #userForm="ngForm">
+      <div *ngFor="let FieldList of AddUserField" class="field-container">
+            <div class="add-user-label">
+              <label>{{FieldList.label}}</label>
+            </div>
+            <div class="add-user-input-field">
+              <input [type]="[FieldList.InputType]" [placeholder]="FieldList.Placeholder" [name]="[FieldList.name]" 
+              [required]="[FieldList.required]" ngModel [pattern]="FieldList.pattern"/>
+            </div>
+            <div class="error-container">
+              <ul *ngFor="let error of FieldList.error" >
+                   <li>{{error.errormessage}}</li>
+              </ul>
+            </div>
+      </div>
+      <div class="btn-container">
+        <button class="add-user-btn" [disabled]="userForm?.invalid">add</button>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <div>{{userForm.value| json}}</div>
+  
